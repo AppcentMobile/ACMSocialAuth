@@ -8,7 +8,10 @@
 import GoogleSignIn
 
 extension GIDSignInResult {
-    var toACM: ACMSocialAuthModel {
-        ACMSocialAuthModel()
+    func toACM(pictureSize: Int? = nil) -> ACMSocialAuthModel {
+        ACMSocialAuthModel(email: user.profile?.email,
+                           fullName: user.profile?.name,
+                           serverAuthCode: serverAuthCode,
+        profileImageUrl: user.profile?.imageURL(withDimension: UInt(pictureSize ?? 512)))
     }
 }

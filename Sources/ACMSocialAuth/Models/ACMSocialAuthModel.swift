@@ -30,5 +30,6 @@ public struct ACMSocialAuthModel {
     public var accessToken: String? = nil
 
     //MARK: Google
-
+    public var serverAuthCode: String? = nil
+    public var profileImageUrl: URL? = nil
 }
