@@ -25,3 +25,10 @@ extension ACMSocialProviders {
         }
     }
 }
+
+extension ACMSocialProviders {
+    func facebook(application: UIApplication,
+                  didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+}

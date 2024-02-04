@@ -16,7 +16,9 @@ final class ACMSocialProviders: NSObject {
 
     var onSuccess: ACMSocialProviderAuthSuccess?
     var onError: ACMSocialProviderAuthError?
+}
 
+extension ACMSocialProviders {
     func login(with provider: ACMSocialProviderType, state: ACMSocialAuthState, onSuccess: ACMSocialProviderAuthSuccess?, onError: ACMSocialProviderAuthError?) {
         ACMSocialProviders.shared.onSuccess = onSuccess
         ACMSocialProviders.shared.onError = onError
@@ -28,6 +30,20 @@ final class ACMSocialProviders: NSObject {
             facebook(state: state)
         case .google:
             google(state: state)
+        }
+    }
+}
+
+extension ACMSocialProviders {
+    func application(with provider: ACMSocialProviderType, application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+        switch provider {
+        case .facebook:
+            facebook(application: application, didFinishLaunchingWithOptions: launchOptions)
+        case .google:
+            return
+        default:
+            return
         }
     }
 }
