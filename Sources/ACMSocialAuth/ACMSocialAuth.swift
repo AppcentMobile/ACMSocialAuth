@@ -12,4 +12,8 @@ public final class ACMSocialAuth: NSObject {
     {
         ACMSocialProviders.shared.application(with: provider, application: application, didFinishLaunchingWithOptions: launchOptions)
     }
+
+    public func application(with provider: ACMSocialProviderType, app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) {
+        ACMSocialProviders.shared.application(with: provider, app: app, open: url, options: options)
+    }
 }

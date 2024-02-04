@@ -41,8 +41,17 @@ extension ACMSocialProviders {
         switch provider {
         case .facebook:
             facebook(application: application, didFinishLaunchingWithOptions: launchOptions)
-        case .google:
+        default:
             return
+        }
+    }
+}
+
+extension ACMSocialProviders {
+    public func application(with provider: ACMSocialProviderType, app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) {
+        switch provider {
+        case .google:
+            google(app: app, open: url, options: options)
         default:
             return
         }

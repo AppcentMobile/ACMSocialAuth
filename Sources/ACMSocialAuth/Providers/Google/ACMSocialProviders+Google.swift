@@ -25,3 +25,9 @@ extension ACMSocialProviders {
         }
     }
 }
+
+extension ACMSocialProviders {
+    func google(app _: UIApplication, open url: URL, options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) {
+        GIDSignIn.sharedInstance.handle(url)
+    }
+}
