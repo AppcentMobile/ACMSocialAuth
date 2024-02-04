@@ -36,7 +36,8 @@ extension ACMSocialProviders {
 
 extension ACMSocialProviders {
     func application(with provider: ACMSocialProviderType, application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)
+    {
         switch provider {
         case .facebook:
             facebook(application: application, didFinishLaunchingWithOptions: launchOptions)

@@ -1,6 +1,6 @@
 //
 //  GIDSignInResult+Extensions.swift
-//  
+//
 //
 //  Created by burak on 4.02.2024.
 //
@@ -12,6 +12,6 @@ extension GIDSignInResult {
         ACMSocialAuthModel(email: user.profile?.email,
                            fullName: user.profile?.name,
                            serverAuthCode: serverAuthCode,
-        profileImageUrl: user.profile?.imageURL(withDimension: UInt(pictureSize ?? 512)))
+                           profileImageUrl: user.profile?.imageURL(withDimension: UInt(pictureSize ?? 512)))
     }
 }

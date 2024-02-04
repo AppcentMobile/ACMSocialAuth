@@ -5,11 +5,11 @@
 //  Created by burak on 4.02.2024.
 //
 
-import UIKit
 import GoogleSignIn
+import UIKit
 
 extension ACMSocialProviders {
-    func google(state: ACMSocialAuthState, pictureSize: Int? = nil) {
+    func google(state _: ACMSocialAuthState, pictureSize: Int? = nil) {
         guard let vc = UIWindow.lastWindow?.rootViewController else { return }
         GIDSignIn.sharedInstance.signIn(withPresenting: vc) { result, error in
             if let error {

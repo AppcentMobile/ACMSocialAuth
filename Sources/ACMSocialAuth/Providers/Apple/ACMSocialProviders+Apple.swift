@@ -9,20 +9,21 @@ import AuthenticationServices
 import Foundation
 
 extension ACMSocialProviders {
-    func apple(state: ACMSocialAuthState) {
+    func apple(state: ACMSocialAuthState, scopes: [String] = ["fullName", "email"]) {
         switch state {
         case .login:
-            appleLogin()
+            appleLogin(scopes: scopes)
         case .logout:
             appleLogout()
         }
     }
 
-    private func appleLogin() {
+    private func appleLogin(scopes: [String]) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedOperation = .operationLogin
-        request.requestedScopes = [.fullName, .email]
+
+        request.requestedScopes = scopes.map { ASAuthorization.Scope($0) }
         request.nonce = String.acmNonce
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])

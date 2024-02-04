@@ -8,7 +8,8 @@ public final class ACMSocialAuth: NSObject {
     }
 
     public func application(with provider: ACMSocialProviderType, application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+                            didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)
+    {
         ACMSocialProviders.shared.application(with: provider, application: application, didFinishLaunchingWithOptions: launchOptions)
     }
 }
