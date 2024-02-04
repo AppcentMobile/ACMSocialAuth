@@ -17,17 +17,17 @@ final class ACMSocialProviders: NSObject {
     var onSuccess: ACMSocialProviderAuthSuccess?
     var onError: ACMSocialProviderAuthError?
 
-    func login(with provider: ACMSocialProviderType, onSuccess: ACMSocialProviderAuthSuccess?, onError: ACMSocialProviderAuthError?) {
+    func login(with provider: ACMSocialProviderType, state: ACMSocialAuthState, onSuccess: ACMSocialProviderAuthSuccess?, onError: ACMSocialProviderAuthError?) {
         ACMSocialProviders.shared.onSuccess = onSuccess
         ACMSocialProviders.shared.onError = onError
 
         switch provider {
         case .apple:
-            apple()
+            apple(state: state)
         case .facebook:
-            facebook()
+            facebook(state: state)
         case .google:
-            google()
+            google(state: state)
         }
     }
 }

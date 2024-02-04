@@ -8,6 +8,7 @@
 import Foundation
 
 public struct ACMSocialAuthModel {
+    //MARK: Apple
     public var authorizationCode: Data? = nil
     public var authorizationCodeAsString: String {
         authorizationCode?.toString ?? ""
@@ -23,5 +24,11 @@ public struct ACMSocialAuthModel {
     public var state: String? = nil
     public var user: String? = nil
 
+    public var appleDirection: ACMSocialAuthState? = nil
+
+    //MARK: Facebook
     public var accessToken: String? = nil
+
+    //MARK: Google
+
 }

@@ -5,8 +5,18 @@
 //  Created by burak on 4.02.2024.
 //
 
-import Foundation
+import UIKit
+import GoogleSignIn
 
 extension ACMSocialProviders {
-    func google() {}
+    func google(state: ACMSocialAuthState) {
+        guard let vc = UIWindow.lastWindow?.rootViewController else { return }
+        GIDSignIn.sharedInstance.signIn(withPresenting: vc) { result, error in
+            if let error {
+                ACMSocialProviders.shared.onError?(error)
+            } else if let result {
+                ACMSocialProviders.shared.onSuccess?(result.toACM)
+            }
+        }
+    }
 }

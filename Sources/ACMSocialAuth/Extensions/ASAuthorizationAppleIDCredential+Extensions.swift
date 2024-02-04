@@ -14,6 +14,7 @@ extension ASAuthorizationAppleIDCredential {
                            fullName: fullName?.toString,
                            identityToken: identityToken,
                            state: state,
-                           user: user)
+                           user: user,
+                           appleDirection: .login)
     }
 }

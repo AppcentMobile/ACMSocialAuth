@@ -9,7 +9,7 @@ import FacebookLogin
 import Foundation
 
 extension ACMSocialProviders {
-    func facebook() {
+    func facebook(state: ACMSocialAuthState) {
         guard let vc = UIWindow.lastWindow?.rootViewController else { return }
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile"], from: vc) { result, error in
