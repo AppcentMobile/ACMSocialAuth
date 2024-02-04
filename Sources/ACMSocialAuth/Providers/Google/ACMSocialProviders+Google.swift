@@ -9,14 +9,19 @@ import GoogleSignIn
 import UIKit
 
 extension ACMSocialProviders {
-    func google(state _: ACMSocialAuthState, pictureSize: Int? = nil) {
-        guard let vc = UIWindow.lastWindow?.rootViewController else { return }
-        GIDSignIn.sharedInstance.signIn(withPresenting: vc) { result, error in
-            if let error {
-                ACMSocialProviders.shared.onError?(error)
-            } else if let result {
-                ACMSocialProviders.shared.onSuccess?(result.toACM(pictureSize: pictureSize))
+    func google(state: ACMSocialAuthState, pictureSize: Int? = nil) {
+        switch state {
+        case .login:
+            guard let vc = UIWindow.lastWindow?.rootViewController else { return }
+            GIDSignIn.sharedInstance.signIn(withPresenting: vc) { result, error in
+                if let error {
+                    ACMSocialProviders.shared.onError?(error)
+                } else if let result {
+                    ACMSocialProviders.shared.onSuccess?(result.toACM(pictureSize: pictureSize))
+                }
             }
+        case .logout:
+            GIDSignIn.sharedInstance.signOut()
         }
     }
 }
