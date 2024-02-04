@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public typealias ACMSocialProviderAuthSuccess = (ACMSocialAuthAppleModel) -> Void
+public typealias ACMSocialProviderAuthSuccess = (ACMSocialAuthModel) -> Void
 public typealias ACMSocialProviderAuthError = (Error) -> Void
 
 final class ACMSocialProviders: NSObject {

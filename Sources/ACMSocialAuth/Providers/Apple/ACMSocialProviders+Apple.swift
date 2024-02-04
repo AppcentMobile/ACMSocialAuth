@@ -16,7 +16,7 @@ extension ACMSocialProviders {
         request.nonce = String.acmNonce
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.presentationContextProvider = UIApplication.shared.windows.last?.rootViewController as? ASAuthorizationControllerPresentationContextProviding
+        authorizationController.presentationContextProvider = UIWindow.presentationContextProvider
         authorizationController.delegate = self
         authorizationController.performRequests()
     }

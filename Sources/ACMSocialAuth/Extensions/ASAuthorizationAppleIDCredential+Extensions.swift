@@ -8,14 +8,12 @@
 import AuthenticationServices
 
 extension ASAuthorizationAppleIDCredential {
-    var toACM: ACMSocialAuthAppleModel {
-        ACMSocialAuthAppleModel(
-            authorizationCode: authorizationCode,
-            email: email,
-            fullName: fullName?.toString,
-            identityToken: identityToken,
-            state: state,
-            user: user
-        )
+    var toACM: ACMSocialAuthModel {
+        ACMSocialAuthModel(authorizationCode: authorizationCode,
+                           email: email,
+                           fullName: fullName?.toString,
+                           identityToken: identityToken,
+                           state: state,
+                           user: user)
     }
 }
