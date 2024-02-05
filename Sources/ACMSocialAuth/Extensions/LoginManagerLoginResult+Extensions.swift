@@ -5,7 +5,7 @@
 //  Created by burak on 4.02.2024.
 //
 
-import FacebookLogin
+import FBSDKLoginKit
 
 extension LoginManagerLoginResult {
     var toACM: ACMSocialAuthModel {

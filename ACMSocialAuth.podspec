@@ -14,4 +14,7 @@ Pod::Spec.new do |spec|
     spec.swift_version = '5.0'  
     spec.source       = { :git => "https://github.com/AppcentMobile/ACMSocialAuth.git", :tag => "#{spec.version}" }
     spec.source_files  = "Sources/**/*.{h,m,swift}"
+    spec.dependency 'FBSDKCoreKit', '16.3.1'
+    spec.dependency 'FBSDKLoginKit', '16.3.1'
+    spec.dependency 'GoogleSignIn', '7.0.0'
   end
