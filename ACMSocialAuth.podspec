@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = "ACMSocialAuth"
-    spec.version      = "1.0.0"
+    spec.version      = "1.0"
     spec.summary      = "ACMSocialAuth iOS Library"
     spec.description  = <<-DESC
       ACMSocialAuth is a social authentication library that help developers to make social auth easily.
