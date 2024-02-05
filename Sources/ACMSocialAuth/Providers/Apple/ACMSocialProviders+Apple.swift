@@ -9,7 +9,7 @@ import AuthenticationServices
 import Foundation
 
 extension ACMSocialProviders {
-    func apple(state: ACMSocialAuthState, scopes: [ACMSocialAuthAppleScope] = [.name, .email]) {
+    func apple(state: ACMSocialAuthState, scopes: [ACMSocialAuthAppleScope]? = [.name, .email]) {
         switch state {
         case .login:
             appleLogin(scopes: scopes)
@@ -18,19 +18,21 @@ extension ACMSocialProviders {
         }
     }
 
-    private func appleLogin(scopes: [ACMSocialAuthAppleScope]) {
+    private func appleLogin(scopes: [ACMSocialAuthAppleScope]?) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedOperation = .operationLogin
 
         var requestedScopes: [ASAuthorization.Scope] = .init()
 
-        if scopes.contains(.email) {
-            requestedScopes.append(.email)
-        }
+        if let scopes {
+            if scopes.contains(.email) {
+                requestedScopes.append(.email)
+            }
 
-        if scopes.contains(.name) {
-            requestedScopes.append(.fullName)
+            if scopes.contains(.name) {
+                requestedScopes.append(.fullName)
+            }
         }
 
         request.requestedScopes = requestedScopes

@@ -9,13 +9,13 @@ import FacebookLogin
 import Foundation
 
 extension ACMSocialProviders {
-    func facebook(state: ACMSocialAuthState, permissions: [String] = ["public_profile", "email"]) {
+    func facebook(state: ACMSocialAuthState, scopes: [ACMSocialAuthFacebookScope]? = [.profile, .email]) {
         let loginManager = LoginManager()
 
         switch state {
         case .login:
-            guard let vc = UIWindow.lastWindow?.rootViewController else { return }
-            loginManager.logIn(permissions: permissions, from: vc) { result, error in
+            guard let vc = UIWindow.lastWindow?.rootViewController, let scopes else { return }
+            loginManager.logIn(permissions: scopes.map { $0.rawValue }, from: vc) { result, error in
                 if let error {
                     ACMSocialProviders.shared.onError?(error)
                 } else if let result {

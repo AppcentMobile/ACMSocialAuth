@@ -19,15 +19,15 @@ final class ACMSocialProviders: NSObject {
 }
 
 extension ACMSocialProviders {
-    func login(with provider: ACMSocialProviderType, state: ACMSocialAuthState, onSuccess: ACMSocialProviderAuthSuccess?, onError: ACMSocialProviderAuthError?) {
+    func auth(with provider: ACMSocialProviderType, state: ACMSocialAuthState, appleScopes: [ACMSocialAuthAppleScope]? = nil, facebookScopes: [ACMSocialAuthFacebookScope]? = nil, onSuccess: ACMSocialProviderAuthSuccess?, onError: ACMSocialProviderAuthError?) {
         ACMSocialProviders.shared.onSuccess = onSuccess
         ACMSocialProviders.shared.onError = onError
 
         switch provider {
         case .apple:
-            apple(state: state)
+            apple(state: state, scopes: appleScopes)
         case .facebook:
-            facebook(state: state)
+            facebook(state: state, scopes: facebookScopes)
         case .google:
             google(state: state)
         }

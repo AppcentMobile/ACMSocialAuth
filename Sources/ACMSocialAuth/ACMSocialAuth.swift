@@ -3,9 +3,11 @@ import UIKit
 public final class ACMSocialAuth: NSObject {
     public static let shared = ACMSocialAuth()
 
-    public func login(with provider: ACMSocialProviderType, state: ACMSocialAuthState, onSuccess: @escaping ACMSocialProviderAuthSuccess, onError: @escaping ACMSocialProviderAuthError) {
-        ACMSocialProviders.shared.login(with: provider, state: state, onSuccess: onSuccess, onError: onError)
+    public func auth(with provider: ACMSocialProviderType, state: ACMSocialAuthState, appleScopes: [ACMSocialAuthAppleScope]? = nil, facebookScopes: [ACMSocialAuthFacebookScope]? = nil, onSuccess: @escaping ACMSocialProviderAuthSuccess, onError: @escaping ACMSocialProviderAuthError) {
+        ACMSocialProviders.shared.auth(with: provider, state: state, appleScopes: appleScopes, facebookScopes: facebookScopes, onSuccess: onSuccess, onError: onError)
     }
+
+    public func check(with _: ACMSocialProviderType, onSuccess _: @escaping ACMSocialProviderAuthSuccess, onError _: @escaping ACMSocialProviderAuthError) {}
 
     public func application(with provider: ACMSocialProviderType, application: UIApplication,
                             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)
