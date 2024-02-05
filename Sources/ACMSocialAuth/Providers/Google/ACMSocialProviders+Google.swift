@@ -24,6 +24,17 @@ extension ACMSocialProviders {
             GIDSignIn.sharedInstance.signOut()
         }
     }
+
+    func checkGoogle() {
+        GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
+            guard let self else { return }
+            if error != nil || user == nil {
+                self.onCheck?(false)
+            } else {
+                self.onCheck?(true)
+            }
+        }
+    }
 }
 
 extension ACMSocialProviders {

@@ -18,6 +18,10 @@ extension ACMSocialProviders {
         }
     }
 
+    // MARK: Apple credentials check
+
+    func checkApple() {}
+
     private func appleLogin(scopes: [ACMSocialAuthAppleScope]?) {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()

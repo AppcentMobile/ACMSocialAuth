@@ -10,12 +10,14 @@ import UIKit
 
 public typealias ACMSocialProviderAuthSuccess = (ACMSocialAuthModel) -> Void
 public typealias ACMSocialProviderAuthError = (Error) -> Void
+public typealias ACMSocialProviderAuthCheck = (Bool) -> Void
 
 final class ACMSocialProviders: NSObject {
     static let shared = ACMSocialProviders()
 
     var onSuccess: ACMSocialProviderAuthSuccess?
     var onError: ACMSocialProviderAuthError?
+    var onCheck: ACMSocialProviderAuthCheck?
 }
 
 extension ACMSocialProviders {
@@ -30,6 +32,21 @@ extension ACMSocialProviders {
             facebook(state: state, scopes: facebookScopes)
         case .google:
             google(state: state)
+        }
+    }
+}
+
+extension ACMSocialProviders {
+    func check(with provider: ACMSocialProviderType, onCheck: @escaping ACMSocialProviderAuthCheck) {
+        ACMSocialProviders.shared.onCheck = onCheck
+
+        switch provider {
+        case .apple:
+            checkApple()
+        case .facebook:
+            checkFacebook()
+        case .google:
+            checkGoogle()
         }
     }
 }

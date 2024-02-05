@@ -7,7 +7,9 @@ public final class ACMSocialAuth: NSObject {
         ACMSocialProviders.shared.auth(with: provider, state: state, appleScopes: appleScopes, facebookScopes: facebookScopes, onSuccess: onSuccess, onError: onError)
     }
 
-    public func check(with _: ACMSocialProviderType, onSuccess _: @escaping ACMSocialProviderAuthSuccess, onError _: @escaping ACMSocialProviderAuthError) {}
+    public func check(with provider: ACMSocialProviderType, onCheck: @escaping ACMSocialProviderAuthCheck) {
+        ACMSocialProviders.shared.check(with: provider, onCheck: onCheck)
+    }
 
     public func application(with provider: ACMSocialProviderType, application: UIApplication,
                             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)

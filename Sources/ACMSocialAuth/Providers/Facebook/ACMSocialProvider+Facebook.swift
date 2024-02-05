@@ -30,6 +30,10 @@ extension ACMSocialProviders {
             loginManager.logOut()
         }
     }
+
+    func checkFacebook() {
+        onCheck?(AccessToken.current != nil)
+    }
 }
 
 extension ACMSocialProviders {
